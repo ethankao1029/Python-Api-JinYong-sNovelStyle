@@ -1,0 +1,256 @@
+html {
+    background-color: #000000;
+}
+
+span{
+    display:block;
+    margin-top:-30px;
+    margin-bottom:10px;
+}
+
+.top{
+    width: 30%;
+    font-size:14pt;
+}
+
+.bottom{
+    width: 95%;
+    font-size:14pt;
+}
+
+.right{
+  float:right;
+  margin-right: 0pt;
+  margin-top: 39pt;
+} 
+
+.left{
+  float:left;  
+  margin-right: -700pt;
+} 
+
+#title {
+    position: relative;
+    padding: 1rem .5rem;
+    color: #fff;
+  }
+  
+#title:after {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 6px;
+    content: '';
+    border-radius: 3px;
+    background-image: -webkit-linear-gradient(20deg, yellow, blue, orange, purple, green, red);
+    background-image: linear-gradient(70deg, yellow, blue, orange, purple, green, red);
+  }
+
+  .container{
+    display: flex;
+    height: 50px; 
+    width: auto; 
+    overflow: hidden; 
+    position: relative;
+  }
+  
+.static-text{
+    white-space: nowrap;
+    font-size:36px;
+}
+  
+
+.dynamic-text{
+    position: relative; 
+    height: 50px;
+    margin-left: 10px;
+    white-space: nowrap;
+    font-weight: bold;
+    color: #b800dc;   
+    font-size:36px;
+}
+
+.dynamic-text:before{
+    content: '';
+    position: absolute;
+    border-left: solid 1px  #860724;       
+    width: 100%;
+    height: 100%;
+    bottom: 0;
+    left:0;
+    background: black; 
+    animation: typewriter 4s steps(23) infinite, 
+blink 0.5s steps(23) infinite;
+        
+}
+  
+@keyframes typewriter{
+    40%, 60%{
+      left: 100%;
+    }
+  
+    100%{
+      left: 0;
+    }
+    
+}
+  
+@keyframes blink{
+    from{border-left: solid 1px  #EDDE5D;}
+    to{border-left: solid 1px  transparent;}
+}
+  
+.dynamic-text-wrapper{
+    position: relative; 
+    top: 0px;
+    animation: moveup 12s steps(3) infinite,
+}
+  
+@keyframes moveup{
+    0%{top:0;}
+    100%{top: -150px;}
+  }
+  
+  .bt {
+    background-color: #000000;    
+    width: 135px;
+    position: relative;
+    padding: 10px 10px;
+    color: #d201fc;
+    font-size: 18px;
+    text-align: center;
+    text-transform: uppercase;
+    transition: 0.5s;
+    letter-spacing: 4px;
+    cursor: pointer;
+    overflow: hidden;
+    margin-top:20px;
+    margin-left:10px;
+    margin-right:5px;
+  }
+  .bt:hover {
+    background-color: #d201fc;
+    border-color:#d201fc;
+    color: #050801;
+    box-shadow: 0 0 5px #d201fc,
+                0 0 25px #d201fc,
+                0 0 50px #d201fc,
+                0 0 200px #d201fc;
+  }
+  .bt div {
+    position: absolute;
+  }
+  .bt div:nth-child(1){
+    width: 100%;
+    height: 2px;
+    top: 0;
+    left: -100%;
+    background: linear-gradient(to right,transparent,#d201fc);
+    animation: animate1 1s linear infinite;
+  }
+  .bt div:nth-child(2){
+    width: 2px;
+    height: 100%;
+    top: -100%;
+    right: 0;
+    background: linear-gradient(to bottom,transparent,#d201fc);
+    animation: animate2 1s linear infinite;
+    animation-delay: 0.25s;
+  }
+  .bt div:nth-child(3){
+    width: 100%;
+    height: 2px;
+    bottom: 0;
+    right: -100%;
+    background: linear-gradient(to left,transparent,#d201fc);
+    animation: animate3 1s linear infinite;
+    animation-delay: 0.5s;
+  }
+  .bt div:nth-child(4){
+    width: 2px;
+    height: 100%;
+    bottom: -100%;
+    left: 0;
+    background: linear-gradient(to top,transparent,#d201fc);
+    animation: animate4 1s linear infinite;
+    animation-delay: 0.75s;
+  }
+  @keyframes animate1 {
+    0% {
+      left: -100%;
+    }
+    50%,100% {
+      left: 100%;
+    }
+  }
+  @keyframes animate2 {
+    0% {
+      top: -100%;
+    }
+    50%,100% {
+      top: 100%;
+    }
+  }
+  @keyframes animate3 {
+    0% {
+      right: -100%;
+    }
+    50%,100% {
+      right: 100%;
+    }
+  }
+  @keyframes animate4 {
+    0% {
+      bottom: -100%;
+    }
+    50%,100% {
+      bottom: 100%;
+    }
+  }
+
+
+.ip{
+    display: inline-block;
+    margin-top:10px;
+    width: 145px;
+    background-color: rgb(0, 0, 0);
+    color: #ffffff;
+    border: 1px solid rgb(112, 112, 112);
+}
+
+input::-webkit-input-placeholder {
+    color: #b9b9b9;
+    font-size:16px;    /* 更改placeholder的字體大小  */
+}
+
+textarea {
+    padding: 10px;
+    max-width: 100%;
+    line-height: 1.5;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    box-shadow: 10px 10px 10px #a005bf;
+    color: #ffffff;
+    background-color: rgb(0, 0, 0);
+    
+}
+
+.flicker{
+    color:#d201fc;
+    font-size:18pt;
+    font-weight:bolder;
+    -webkit-animation:flicker 2s infinite;
+    }
+    
+@-webkit-keyframes flicker{
+    0%{
+        opacity:1;
+    }  
+    50%{
+        opacity:0.5;
+    }
+    100%{
+        opacity:1;
+    }
+}
