@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <title>D10916203--AI期末程式</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+
+<body>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <div class="container" id="title" >
+        <div class="static-text">AI 也可以很金庸：</div>
+        <div class="dynamic-text-wrapper">
+          <div class="dynamic-text">如何用 TensorFlow 2.4 及 Python Api 寫金庸風格小說</div>
+        </div>
+    </div>
+    
+<div class="left">
+    <div>        
+        <button id="initialize-seed" class="bt" onclick="clearInputFunction()">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            重置輸入
+        </button>        
+        <button id="generate-text" class="bt" onclick="predictFunction()">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            生成文章
+        </button>        
+    </div>
+
+
+    <section style="margin-bottom: 3rem">
+        <div>           
+            <input id="generate-length" class="ip" placeholder="生成文章總字數" value="150"/>          
+            <input id="temperature" class="ip" placeholder="生成溫度（0~1之間）" value="0.6"/>
+        </div>
+    </section>
+
+    <section style="margin-bottom: 3rem">
+        <div>
+            <span class="flicker">起始句子：</span>
+            <span id="text-generation-status" style="display: none"></span>
+            <textarea class="top" id="seed-text" rows="5" cols="100" style="min-height: 3em" placeholder="請輸入句子" value="">皮皮蝦輕功一展縱身一躍，</textarea>
+        </div>
+    </section>
+</div>
+
+<div class="right">
+    <section style="margin-bottom: 3rem">
+        <div>
+            <span class="flicker" >生成結果：</span>
+            <textarea class="bottom" id="generated-text" readonly="true" rows="15" cols="90" value=""></textarea>
+        </div>
+
+    </section>
+</div>
+    
+
+    <script>
+        function clearInputFunction() {
+            document.getElementById("seed-text").innerHTML = "";
+            document.getElementById("seed-text").value = "";
+            document.getElementById("generate-length").value = "";//+
+            document.getElementById("temperature").value = "";//+
+            document.getElementById("generated-text").innerHTML ='';
+        }
+    </script>
+
+    <script>
+        var words_number = document.getElementById("generate-length");
+        var temperature = document.getElementById("temperature");
+        
+        function predictFunction() {
+            var string_string = document.getElementById("seed-text").value;            
+            document.getElementById("generated-text").innerHTML ='';
+            fetch('http://127.0.0.1:5000/text_gen?start_string='+string_string+'&words_number='+words_number.value+'&temperature='+temperature.value)
+            .then(res => {
+                    return res.text();
+            }).then(result => {
+                console.log(result);
+                document.getElementById("generated-text").innerHTML = result;
+            });
+        }
+    </script>
+
+</body>
+
+</html>
